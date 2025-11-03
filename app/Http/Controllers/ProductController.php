@@ -8,58 +8,85 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar todos los productos.
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return response()->json($products);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar el formulario para crear un nuevo producto (si usas vistas).
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guardar un nuevo producto en la base de datos.
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
+        ]);
+
+        $product = Product::create($request->all());
+
+        return response()->json([
+            'message' => 'Producto creado correctamente',
+            'product' => $product
+        ], 201);
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar un producto específico.
      */
     public function show(Product $product)
     {
-        //
+        return response()->json($product);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostrar el formulario para editar un producto (si usas vistas).
      */
     public function edit(Product $product)
     {
-        //
+        return view('products.edit', compact('product'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizar un producto existente.
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'sometimes|required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'sometimes|required|numeric|min:0',
+        ]);
+
+        $product->update($request->all());
+
+        return response()->json([
+            'message' => 'Producto actualizado correctamente',
+            'product' => $product
+        ]);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Eliminar un producto.
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return response()->json([
+            'message' => 'Producto eliminado correctamente'
+        ]);
     }
 }
