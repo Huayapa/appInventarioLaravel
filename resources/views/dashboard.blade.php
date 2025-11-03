@@ -19,28 +19,28 @@
 
     <!-- Tarjetas del dashboard -->
     <div class="valorant-dashboard">
-        <a href="/productos" class="valorant-card">
+        <a href="{{ route('products.index') }}" class="valorant-card">
             <div class="card-content">
                 <h2>Productos</h2>
                 <p>Gestiona, crea y actualiza los productos del inventario.</p>
             </div>
         </a>
 
-        <a href="/ventas" class="valorant-card">
+        <a href="{{ route('sales.index') }}" class="valorant-card">
             <div class="card-content">
                 <h2>Ventas</h2>
                 <p>Controla y registra las ventas de tus productos.</p>
             </div>
         </a>
 
-        <a href="/detalle-ventas" class="valorant-card">
+        <a href="{{ route('sale_details.index') }}" class="valorant-card">
             <div class="card-content">
                 <h2>Detalle de Ventas</h2>
                 <p>Consulta cada transacción con todos sus detalles.</p>
             </div>
         </a>
 
-        <a href="/graficos" class="valorant-card">
+        <a href="#" class="valorant-card">
             <div class="card-content">
                 <h2>Gráficos</h2>
                 <p>Visualiza estadísticas y reportes de desempeño.</p>

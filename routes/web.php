@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\SaleDetailController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,52 +14,23 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-//RUTAS DE PRODUCTOS
-
-Route::get('/productos', function () {
-    return view('productos.index');
-});
-
-Route::get('/productos/edit', function () {
-    return view('productos.edit');
-})->name('productos.edit');
-
-Route::get('/productos/crear', function () {
-    return view('productos.create');
-})->name('productos.create');
-
-//RUTAS DE VENTAS
-
-Route::get('/ventas', function () {
-    return view('ventas.index');
-})->name('ventas.index');
-
-Route::get('/ventas/crear', function () {
-    return view('ventas.create');
-})->name('ventas.create');
-
-Route::get('/ventas/edit', function () {
-    return view('ventas.edit');
-})->name('ventas.edit');
-
-//RUTA DETALLE DE VENTAS
-
-Route::get('/detalle-ventas', function () {
-    return view('detalle_ventas.index');
-});
-
-Route::get('/detalle-ventas/crear', function () {
-    return view('detalle_ventas.create');
-})->name('detalle_ventas.create');
-
-Route::get('/detalle-ventas/edit', function () {
-    return view('detalle_ventas.edit');
-})->name('detalle_ventas.edit');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Route::get('products', [ProductController::class, 'index'])->name('products.index');
+    // Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
+    // Route::post('products/create', [ProductController::class, 'store'])->name('products.store');
+    // Route::get('products/edit/{product}', [ProductController::class, 'edit'])->name('products.edit');
+    // Route::put('products/edit/{product}', [ProductController::class, 'update'])->name('products.update');
+    // Route::delete('products/delete/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+    Route::resource('products', ProductController::class);
+    Route::resource('sales', SaleController::class);
+    Route::resource('sale_details', SaleDetailController::class);
+
 });
 
 

@@ -11,25 +11,31 @@
         <div class="create-box">
             <h2>Registrar Nueva Venta</h2>
 
-            <form class="create-form">
+            <form class="create-form" action="{{ route('sales.store') }}" method="POST">
+                @csrf
+
                 <div class="form-group">
-                    <label for="user_id">Usuario</label>
-                    <input type="text" id="user_id" name="user_id" placeholder="Ingrese el ID del usuario" required>
+                    <label for="product_id">Producto</label>
+                    <select id="product_id" name="product_id">
+                        @foreach ($products as $product)
+                        <option value="{{ $product->id }}"> {{ $product->name }} </option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="sale_date">Fecha de Venta</label>
-                    <input type="datetime-local" id="sale_date" name="sale_date" required>
+                    <label for="quantity">Cantidad</label>
+                    <input type="number" id="quantity" name="quantity" placeholder="Ingrese la cantidad del producto" required>
                 </div>
-
+{{-- 
                 <div class="form-group">
                     <label for="total">Total (S/)</label>
                     <input type="number" id="total" name="total" step="0.01" placeholder="Ingrese el total" required>
-                </div>
+                </div> --}}
 
                 <div class="form-actions">
                     <button type="submit" class="btn-create">Guardar</button>
-                    <a href="/ventas" class="btn-cancel">Cancelar</a>
+                    <a href="{{ route('sales.index') }}" class="btn-cancel">Cancelar</a>
                 </div>
             </form>
         </div>

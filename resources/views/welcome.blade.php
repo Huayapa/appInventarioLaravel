@@ -11,7 +11,10 @@
     <!-- Barra superior -->
     <header class="navbar">
         <h1 class="logo">Tienda Gamer</h1>
-        <a href="/login" class="login-btn">Login</a>
+        <div>
+            <a href="/login" class="login-btn">Login</a>
+            <a href="/register" class="login-btn">Register</a>
+        </div>
     </header>
 
     <!-- Contenedor de productos -->

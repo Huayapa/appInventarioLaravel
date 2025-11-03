@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return response()->json($products);
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -33,14 +33,12 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
+            'stock' => 'required|numeric'
         ]);
 
         $product = Product::create($request->all());
 
-        return response()->json([
-            'message' => 'Producto creado correctamente',
-            'product' => $product
-        ], 201);
+        return redirect()->route('products.index')->with('message', 'Producto creado correctamente');
     }
 
     /**
@@ -72,10 +70,7 @@ class ProductController extends Controller
 
         $product->update($request->all());
 
-        return response()->json([
-            'message' => 'Producto actualizado correctamente',
-            'product' => $product
-        ]);
+        return redirect()->route('products.index')->with('message', 'Producto actualizado correctamente');
     }
 
     /**
@@ -85,8 +80,7 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return response()->json([
-            'message' => 'Producto eliminado correctamente'
-        ]);
+        return redirect()->route('products.index')->with('message', 'Producto eliminado correctamente');
+
     }
 }

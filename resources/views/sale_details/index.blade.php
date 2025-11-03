@@ -10,7 +10,7 @@
     <div class="ventas-container">
         <div class="header">
             <h1>Detalle de Ventas</h1>
-            <a href="/detalle-ventas/crear" class="btn-create">+ Crear Detalle</a>
+            <a href="{{ route('sale_details.create') }}" class="btn-create">+ Crear Detalle</a>
         </div>
 
         <table class="ventas-table">
@@ -26,6 +26,7 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($details as $saleDetail)
                 <tr>
                     <td>1</td>
                     <td>12</td>
@@ -34,10 +35,17 @@
                     <td>S/ 25.00</td>
                     <td>S/ 75.00</td>
                     <td>
-                        <a href="/detalle-ventas/edit" class="btn-edit">Editar</a>
-                        <button class="btn-delete">Eliminar</button>
+                        <a href="{{ route('sale_details.edit', $saleDetail) }}" class="btn-edit">Editar</a>
+                        <form action="{{ route('sale_details.destroy', $saleDetail) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn-delete" onclick="return confirm('¿Eliminar este detalle de venta?')">
+                                Eliminar
+                            </button>
+                        </form>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Sale;
+use App\Models\SaleDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 
 class SaleController extends Controller
 {
@@ -13,7 +17,8 @@ class SaleController extends Controller
     public function index()
     {
         $sales = Sale::all();
-        return response()->json($sales);
+        $products = Product::all();
+        return view('sales.index', compact('sales', 'products'));
     }
 
     /**
@@ -21,7 +26,8 @@ class SaleController extends Controller
      */
     public function create()
     {
-        return view('sales.create');
+        $products = Product::all();
+        return view('sales.create', compact('products'));
     }
 
     /**
@@ -29,19 +35,28 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $product = Product::find($request['product_id']);
+
+        $saleDetails = $request->validate([
             'product_id' => 'required|integer|exists:products,id',
             'quantity'   => 'required|integer|min:1',
-            'total'      => 'required|numeric|min:0',
-            'date'       => 'required|date',
         ]);
 
-        $sale = Sale::create($request->all());
+        $saleDetails['unit_price'] = $product->price;
+        $saleDetails['subtotal'] = $product->price * $request['quantity'];
+        
+        $saleData = [
+            'user_id' => Auth::id(),
+            'sale_date' => now(),
+            'total' => $product->price * $request['quantity']
+        ];
+        
+        $sale = Sale::create($saleData);
+        
+        $saleDetails['sale_id'] = $sale->id;
+        SaleDetail::create($saleDetails);
 
-        return response()->json([
-            'message' => 'Venta registrada correctamente',
-            'sale' => $sale
-        ], 201);
+        return redirect()->route('sales.index')->with('message', 'Venta creada correctamente.');
     }
 
     /**
@@ -65,19 +80,16 @@ class SaleController extends Controller
      */
     public function update(Request $request, Sale $sale)
     {
-        $request->validate([
-            'product_id' => 'sometimes|required|integer|exists:products,id',
-            'quantity'   => 'sometimes|required|integer|min:1',
-            'total'      => 'sometimes|required|numeric|min:0',
-            'date'       => 'sometimes|required|date',
+
+        $saleDetails = $request->validate([
+            'user_id' => 'required|integer|exists:users,id',
         ]);
 
-        $sale->update($request->all());
 
-        return response()->json([
-            'message' => 'Venta actualizada correctamente',
-            'sale' => $sale
-        ]);
+        $sale->update($saleDetails);
+
+        return redirect()->route('sales.index')->with('message', 'Venta actualizada correctamente.');
+
     }
 
     /**
@@ -87,8 +99,6 @@ class SaleController extends Controller
     {
         $sale->delete();
 
-        return response()->json([
-            'message' => 'Venta eliminada correctamente'
-        ]);
+        return redirect()->route('sales.index')->with('message', 'Venta eliminada correctamente.');
     }
 }
