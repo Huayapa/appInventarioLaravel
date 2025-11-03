@@ -1,0 +1,111 @@
+/* Fondo general */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
+    color: #eee;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* Contenedor principal */
+.ventas-container {
+    width: 90%;
+    max-width: 1100px;
+}
+
+/* Encabezado */
+.ventas-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.ventas-header h1 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.btn-create {
+    background-color: #4f46e5;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.btn-create:hover {
+    background-color: #6366f1;
+}
+
+/* Tabla de ventas */
+.ventas-table-container {
+    overflow-x: auto;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.ventas-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.ventas-table th, .ventas-table td {
+    padding: 0.9rem 1rem;
+    text-align: left;
+}
+
+.ventas-table th {
+    background-color: #2a2a2a;
+    color: #8b5cf6;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.ventas-table tr:nth-child(even) {
+    background-color: #252525;
+}
+
+.ventas-table tr:hover {
+    background-color: #2f2f2f;
+}
+
+/* Botones de acción */
+.btn-edit, .btn-delete {
+    padding: 0.5rem 0.8rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.3s;
+}
+
+.btn-edit {
+    background-color: #3b82f6;
+    margin-right: 0.4rem;
+}
+
+.btn-edit:hover {
+    background-color: #2563eb;
+}
+
+.btn-delete {
+    background-color: #ef4444;
+}
+
+.btn-delete:hover {
+    background-color: #dc2626;
+}

@@ -1,17 +1,52 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Principal</title>
+    @vite(['resources/css/dashboard.css'])
+</head>
+<body>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
+    <!-- Barra superior -->
+    <header class="navbar">
+        <h1 class="logo">Panel Principal</h1>
+        <form action="/logout" method="POST">
+            @csrf
+            <button type="submit" class="logout-btn">Cerrar sesión</button>
+        </form>
+    </header>
+
+    <!-- Tarjetas del dashboard -->
+    <div class="valorant-dashboard">
+        <a href="/productos" class="valorant-card">
+            <div class="card-content">
+                <h2>Productos</h2>
+                <p>Gestiona, crea y actualiza los productos del inventario.</p>
             </div>
-        </div>
+        </a>
+
+        <a href="/ventas" class="valorant-card">
+            <div class="card-content">
+                <h2>Ventas</h2>
+                <p>Controla y registra las ventas de tus productos.</p>
+            </div>
+        </a>
+
+        <a href="/detalle-ventas" class="valorant-card">
+            <div class="card-content">
+                <h2>Detalle de Ventas</h2>
+                <p>Consulta cada transacción con todos sus detalles.</p>
+            </div>
+        </a>
+
+        <a href="/graficos" class="valorant-card">
+            <div class="card-content">
+                <h2>Gráficos</h2>
+                <p>Visualiza estadísticas y reportes de desempeño.</p>
+            </div>
+        </a>
     </div>
-</x-app-layout>
+
+</body>
+</html>
