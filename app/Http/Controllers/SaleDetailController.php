@@ -88,7 +88,7 @@ class SaleDetailController extends Controller
         $saleDetail->delete();
 
         return response()->json([
-            'message' => 'Detalle de venta eliminado correctamente'
+            'message' => 'Detalle de venta eliminado '
         ]);
     }
 }
