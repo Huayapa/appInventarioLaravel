@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Productos</title>
     @vite(['resources/css/welcome.css'])
 </head>
+
 <body>
 
     <!-- Barra superior -->
@@ -19,15 +21,17 @@
 
     <!-- Contenedor de productos -->
     <div class="product-container">
-        <div class="product-card">
-            <h3 class="product-name">Teclado Mecánico</h3>
-            <p class="product-description">Teclado mecánico retroiluminado RGB con switches rojos.</p>
-            <div class="product-info">
-                <span class="price">S/ 150.00</span>
-                <span class="stock">Stock: 12</span>
+        @foreach ($products as $product)
+            <div class="product-card">
+                <h3 class="product-name">{{ $product->name }}</h3>
+                <p class="product-description">{{ $product->description }}</p>
+                <div class="product-info">
+                    <span class="price">S/ {{ number_format($product->price, 2) }}</span>
+                    <span class="stock">Stock: {{ $product->stock }}</span>
+                </div>
+                <a href="{{ route('buy.product', $product) }}" class="buy-btn">Comprar</a>
             </div>
-            <button class="buy-btn">Comprar</button>
-        </div>
+        @endforeach
 
         <div class="product-card">
             <h3 class="product-name">Mouse Gamer</h3>
@@ -51,4 +55,5 @@
     </div>
 
 </body>
+
 </html>

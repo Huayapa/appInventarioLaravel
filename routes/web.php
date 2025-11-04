@@ -4,11 +4,15 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SaleDetailController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+Route::get('/buy/{product}', [WelcomeController::class, 'buyProduct'])->name('buy.product');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
