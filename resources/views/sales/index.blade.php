@@ -10,7 +10,10 @@
     <div class="ventas-container">
         <div class="header">
             <h1>Listado de Ventas</h1>
-            <a href="{{ route('sales.create') }}" class="btn-create">+ Crear Venta</a>
+            <div style="display: flex; gap: 10px;">
+                <a href="{{ route('sales.create') }}" class="btn-create">+ Crear Venta</a>
+                <a href="{{ route('dashboard') }}" class="btn-delete" style="text-decoration: none;">← Volver</a>
+            </div>
         </div>
 
         <table class="ventas-table">

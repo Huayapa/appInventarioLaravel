@@ -13,4 +13,14 @@ class SaleDetail extends Model
         'unit_price',
         'subtotal',
     ];
+
+    public function sale()
+    {
+        return $this->belongsTo(Sale::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

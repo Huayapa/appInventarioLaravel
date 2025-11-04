@@ -12,7 +12,10 @@
     <div class="ventas-container">
         <div class="ventas-header">
             <h1>Productos</h1>
-            <a href="{{ route('products.create') }}" class="btn-create">+ Crear Producto</a>
+            <div style="display: flex; gap: 10px;">
+                <a href="{{ route('sales.create') }}" class="btn-create">+ Crear Producto</a>
+                <a href="{{ route('dashboard') }}" class="btn-delete" style="text-decoration: none;">← Volver</a>
+            </div>
         </div>
 
         <div class="ventas-table-container">

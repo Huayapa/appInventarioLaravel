@@ -58,15 +58,6 @@ class SaleController extends Controller
 
         return redirect()->route('sales.index')->with('message', 'Venta creada correctamente.');
     }
-
-    /**
-     * Mostrar una venta específica.
-     */
-    public function show(Sale $sale)
-    {
-        return response()->json($sale);
-    }
-
     /**
      * Mostrar el formulario para editar una venta (si usas vistas Blade).
      */

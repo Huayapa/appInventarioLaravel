@@ -10,7 +10,10 @@
     <div class="ventas-container">
         <div class="header">
             <h1>Detalle de Ventas</h1>
-            <a href="{{ route('sale_details.create') }}" class="btn-create">+ Crear Detalle</a>
+            {{-- <a href="{{ route('sale_details.create') }}" class="btn-create">+ Crear Detalle</a> --}}
+            <div style="display: flex; gap: 10px;">
+                <a href="{{ route('dashboard') }}" class="btn-delete" style="text-decoration: none;">← Volver</a>
+            </div>
         </div>
 
         <table class="ventas-table">
@@ -22,19 +25,19 @@
                     <th>Cantidad</th>
                     <th>Precio Unitario</th>
                     <th>Subtotal</th>
-                    <th>Acciones</th>
+                    {{-- <th>Acciones</th> --}}
                 </tr>
             </thead>
             <tbody>
                 @foreach ($details as $saleDetail)
                 <tr>
-                    <td>1</td>
-                    <td>12</td>
-                    <td>8</td>
-                    <td>3</td>
-                    <td>S/ 25.00</td>
-                    <td>S/ 75.00</td>
-                    <td>
+                    <td>{{ $saleDetail->id }}</td>
+                    <td>{{ $saleDetail->sale_id }}</td>
+                    <td>{{ $saleDetail->product?->name }}</td>
+                    <td>{{ $saleDetail->quantity }}</td>
+                    <td>S/ {{ number_format($saleDetail->unit_price, 2) }}</td>
+                    <td>S/ {{ number_format($saleDetail->subtotal, 2) }}</td>
+                    {{-- <td>
                         <a href="{{ route('sale_details.edit', $saleDetail) }}" class="btn-edit">Editar</a>
                         <form action="{{ route('sale_details.destroy', $saleDetail) }}" method="POST" style="display:inline;">
                             @csrf
@@ -43,7 +46,7 @@
                                 Eliminar
                             </button>
                         </form>
-                    </td>
+                    </td> --}}
                 </tr>
                 @endforeach
             </tbody>

@@ -15,6 +15,7 @@
 
             <form class="create-form" action="{{ route('sales.update', $sale) }}" method="POST">
                 @csrf
+                @method('PUT')
 
                 <div class="form-group">
                     <label for="user_id">Usuario</label>
