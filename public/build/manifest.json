@@ -7,6 +7,110 @@
       "app.css"
     ]
   },
+  "resources/css/crear_productos.css": {
+    "file": "assets/crear_productos-DW1Gb76Q.css",
+    "src": "resources/css/crear_productos.css",
+    "isEntry": true,
+    "names": [
+      "crear_productos.css"
+    ]
+  },
+  "resources/css/create_detalle_ventas.css": {
+    "file": "assets/create_detalle_ventas-D43IsFbu.css",
+    "src": "resources/css/create_detalle_ventas.css",
+    "isEntry": true,
+    "names": [
+      "create_detalle_ventas.css"
+    ]
+  },
+  "resources/css/create_ventas.css": {
+    "file": "assets/create_ventas-Cn7Tenqv.css",
+    "src": "resources/css/create_ventas.css",
+    "isEntry": true,
+    "names": [
+      "create_ventas.css"
+    ]
+  },
+  "resources/css/dashboard.css": {
+    "file": "assets/dashboard-DDgST_Fq.css",
+    "src": "resources/css/dashboard.css",
+    "isEntry": true,
+    "names": [
+      "dashboard.css"
+    ]
+  },
+  "resources/css/edit_detalle_ventas.css": {
+    "file": "assets/edit_detalle_ventas-9iR7YUzx.css",
+    "src": "resources/css/edit_detalle_ventas.css",
+    "isEntry": true,
+    "names": [
+      "edit_detalle_ventas.css"
+    ]
+  },
+  "resources/css/edit_productos.css": {
+    "file": "assets/edit_productos-JKDbs-k7.css",
+    "src": "resources/css/edit_productos.css",
+    "isEntry": true,
+    "names": [
+      "edit_productos.css"
+    ]
+  },
+  "resources/css/edit_ventas.css": {
+    "file": "assets/edit_ventas-C23n3M4d.css",
+    "src": "resources/css/edit_ventas.css",
+    "isEntry": true,
+    "names": [
+      "edit_ventas.css"
+    ]
+  },
+  "resources/css/index_detalle_ventas.css": {
+    "file": "assets/index_detalle_ventas-WmqFxu6E.css",
+    "src": "resources/css/index_detalle_ventas.css",
+    "isEntry": true,
+    "names": [
+      "index_detalle_ventas.css"
+    ]
+  },
+  "resources/css/index_ventas.css": {
+    "file": "assets/index_ventas-CMbeyOxQ.css",
+    "src": "resources/css/index_ventas.css",
+    "isEntry": true,
+    "names": [
+      "index_ventas.css"
+    ]
+  },
+  "resources/css/login.css": {
+    "file": "assets/login-RC2yy2CV.css",
+    "src": "resources/css/login.css",
+    "isEntry": true,
+    "names": [
+      "login.css"
+    ]
+  },
+  "resources/css/productos.css": {
+    "file": "assets/productos-ComoUFXC.css",
+    "src": "resources/css/productos.css",
+    "isEntry": true,
+    "names": [
+      "productos.css"
+    ]
+  },
+  "resources/css/register.css": {
+    "file": "assets/register-DA6vJQ_i.css",
+    "src": "resources/css/register.css",
+    "isEntry": true,
+    "names": [
+      "register.css"
+    ]
+  },
+  "resources/css/welcome.css": {
+    "file": "assets/welcome-XicCqYhe.css",
+    "src": "resources/css/welcome.css",
+    "isEntry": true,
+    "names": [
+      "welcome.css"
+    ]
+  },
   "resources/js/app.js": {
     "file": "assets/app-CSaIrnPr.js",
     "name": "app",
