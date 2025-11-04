@@ -32,6 +32,8 @@ jobs:
       - name: Run composer install if composer.json exists
         if: steps.check_files.outputs.files_exists == 'true'
         run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
+      - name: Zip the aplication files
+        run: zip -r release.zip ./*
 
 
       - name: Upload artifact for deployment job
@@ -49,6 +51,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: php-app
+      - name: Unzip artifact
+        run: unzip release.zip
       
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
@@ -57,4 +61,5 @@ jobs:
           app-name: 'appInventarioG'
           slot-name: 'Production'
           package: .
+
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3B94544C43A548198C4ADFE3D2DC0F56 }}
