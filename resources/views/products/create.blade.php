@@ -11,7 +11,9 @@
         <div class="create-box">
             <h2>Registrar Nuevo Producto</h2>
 
-            <form class="create-form">
+            <form class="create-form" method="POST" action="{{ route('products.store') }}">
+                @csrf
+
                 <div class="form-group">
                     <label for="name">Nombre</label>
                     <input type="text" id="name" name="name" placeholder="Ingrese el nombre del producto" required>
@@ -34,7 +36,7 @@
 
                 <div class="form-actions">
                     <button type="submit" class="btn-create">Guardar</button>
-                    <a href="/ventas" class="btn-cancel">Cancelar</a>
+                    <a href="{{ route('products.index') }}" class="btn-cancel">Cancelar</a>
                 </div>
             </form>
         </div>

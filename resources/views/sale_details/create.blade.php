@@ -11,7 +11,9 @@
         <div class="create-box">
             <h2>Registrar Detalle de Venta</h2>
 
-            <form class="create-form">
+            <form class="create-form" method='POST' action="{{ route('sale_details.store') }}">
+                @csrf
+
                 <div class="form-group">
                     <label for="sale_id">ID Venta</label>
                     <input type="number" id="sale_id" name="sale_id" placeholder="Ingrese el ID de la venta" required>
@@ -39,7 +41,7 @@
 
                 <div class="form-actions">
                     <button type="submit" class="btn-create">Guardar</button>
-                    <a href="/detalle-ventas" class="btn-cancel">Cancelar</a>
+                    <a href="{{ route('sale_details.index') }}" class="btn-cancel">Cancelar</a>
                 </div>
             </form>
         </div>

@@ -13,7 +13,7 @@ class SaleDetailController extends Controller
     public function index()
     {
         $details = SaleDetail::all();
-        return response()->json($details);
+        return view('sale_details.index', compact('details'));
     }
 
     /**
@@ -38,10 +38,7 @@ class SaleDetailController extends Controller
 
         $detail = SaleDetail::create($request->all());
 
-        return response()->json([
-            'message' => 'Detalle de venta registrado correctamente',
-            'sale_detail' => $detail
-        ], 201);
+        return redirect()->route('sale_details.index')->with('message', 'Detalle de venta guardada correctamente.');
     }
 
     /**
@@ -74,10 +71,7 @@ class SaleDetailController extends Controller
 
         $saleDetail->update($request->all());
 
-        return response()->json([
-            'message' => 'Detalle de venta actualizado correctamente',
-            'sale_detail' => $saleDetail
-        ]);
+        return redirect()->route('sale_details.index')->with('message', 'Detalle de venta actualizada correctamente.');
     }
 
     /**
@@ -87,8 +81,6 @@ class SaleDetailController extends Controller
     {
         $saleDetail->delete();
 
-        return response()->json([
-            'message' => 'Detalle de venta eliminado '
-        ]);
+        return redirect()->route('sale_details.index')->with('message', 'Detalle de venta eliminado correctamente.');
     }
 }
